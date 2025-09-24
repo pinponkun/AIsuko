@@ -1,0 +1,70 @@
+.rightSidebar {
+  width: 320px;
+  background: #f8f9fa;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 24px;
+  margin-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebarSection {
+  margin-bottom: 20px;
+}
+
+.sidebarTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1DA1F2;
+  margin-bottom: 12px;
+}
+
+.sidebarContent {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.sidebarLink {
+  color: #1DA1F2;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+.sidebarLink:hover {
+  color: #1991db;
+}
+
+.widget {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.detailScoreBox {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+}
+
+.detailScoreTitle {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.detailScoreGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+}

@@ -1,0 +1,639 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap');
+/* === 基本設定とカラーパレット === */
+:root {
+  --primary-pink: #ff69b4;
+  --light-pink: #ffb6c1;
+  --soft-pink: #ffc0cb;
+  --pale-pink: #ffe4e6;
+  --background-color: #fdfafc;
+  --border-color: #f0b7c4;
+  --text-primary: #2d1b2e;
+  --text-primary2: #d63384;
+  --text-secondary: #6f6f6f;
+  --accent-color: #e91e63;
+  --hover-pink: #ff85c1;
+}
+
+/* body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  margin: 0;
+} */
+
+body{
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+
+/* === 全体レイアウト === */
+/* 3カラムレイアウト (ランキングページ用) */
+.layout-3-column {
+  display: grid;
+  grid-template-columns: 600px 1fr 220px; /* 左サイドバー、中央コンテンツ、右サイドバー */
+  max-width: none; /* 全体幅 */
+  margin: 0 auto;
+  margin-left: 275px; /* 固定サイドバー分のマージン調整 */
+  height: 100vh;
+}
+
+/* 2カラムレイアウト (投稿ページ用) */
+.layout-2-column {
+  display: grid;
+  grid-template-columns: 1fr; /* 中央のみ */
+  max-width: 990px;
+  margin: 0 auto;
+  margin-left: 275px; /* 固定サイドバー分のマージン調整 */
+  height: 100vh;
+}
+
+/* === 各カラムの基本スタイル === */
+.main-content {
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+}
+
+/* === 左サイドバー === */
+.left-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-right: 1px solid var(--border-color);
+  z-index: 1000;
+}
+
+.sidebar-nav {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--text-primary2);
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+}
+
+.nav-item:hover {
+  background-color: var(--pale-pink);
+  color: var(--accent-color);
+}
+
+.nav-item.active {
+  font-weight: 700;
+}
+
+.nav-icon {
+  margin-right: 20px;
+}
+
+/* === 右サイドバー === */
+.right-sidebar {
+  padding: 16px;
+  overflow-y: auto; /* スクロール可能にする */
+}
+
+.widget {
+  background: linear-gradient(135deg, var(--soft-pink), var(--pale-pink));
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(255, 182, 193, 0.2);
+}
+
+.widget h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+}
+.widget h4 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+.widget p {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+/* === 中央コンテンツ === */
+.timeline {
+  min-width: 0; /* はみ出し防止 */
+}
+
+.timeline-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  background-color: rgba(253, 250, 252, 0.95);
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
+
+.timeline-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* 投稿フォーム */
+.tweet-form-container {
+  padding: 16px;
+  border-bottom: 10px solid var(--border-color);
+  animation: fadeIn 0.8s ease-in-out 0.2s both;
+}
+
+.tweet-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tweet-form button {
+  background: linear-gradient(135deg, var(--primary-pink), var(--accent-color));
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(233, 30, 99, 0.2);
+}
+
+.tweet-form button:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--hover-pink), var(--primary-pink));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(233, 30, 99, 0.3);
+}
+
+.tweet-form button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* 投稿リスト(ツイートフィード) */
+.tweet-feed {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.tweet-content {
+  font-family: sans-serif;
+}
+
+
+.tweet {
+  background: linear-gradient(135deg, #ffffff, var(--pale-pink));
+  border-radius: 12px;
+  padding: 20px;
+  margin: 12px;
+  max-width: none;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(255, 182, 193, 0.1);
+}
+
+.tweet:hover {
+  background: linear-gradient(135deg, var(--pale-pink), var(--soft-pink));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.25);
+}
+
+.tweet.selected {
+  background: linear-gradient(135deg, var(--soft-pink), var(--light-pink));
+  border-left: 3px solid var(--primary-pink);
+  box-shadow: 0 4px 16px rgba(255, 105, 180, 0.3);
+}
+
+.tweet-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px;
+  resize: vertical;
+  min-height: 120px;
+  background-color: white;
+  color: var(--text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.tweet-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-pink);
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
+}
+
+/* === アニメーション === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* すべてのページでフェードインアニメーション */
+.main-content .timeline {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* 投稿ページのフェードイン */
+.submission-page {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* AIプランページのフェードイン */
+.ai-plan-page {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* 検索ページのフェードイン */
+.search-page {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* フォーム要素の遅延アニメーション */
+.ai-plan-container {
+  animation: fadeIn 0.8s ease-in-out 0.2s both;
+}
+
+/* === コメント機能のスタイル === */
+.comments-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.comments-section h3 {
+  color: var(--text-primary);
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.comments-form {
+  margin-bottom: 20px;
+}
+
+.comments-form input,
+.comments-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.comments-form input:focus,
+.comments-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-pink);
+  box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.1);
+}
+
+.comments-form button {
+  background: linear-gradient(135deg, var(--primary-pink), var(--accent-color));
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(233, 30, 99, 0.2);
+}
+
+.comments-form button:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--hover-pink), var(--primary-pink));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(233, 30, 99, 0.3);
+}
+
+.comments-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.comments-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.comment-item {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #ffffff, var(--pale-pink));
+  transition: all 0.2s;
+}
+
+.comment-item:hover {
+  background: linear-gradient(135deg, var(--pale-pink), var(--soft-pink));
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 182, 193, 0.2);
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.comment-username {
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.comment-time {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.comment-text {
+  margin: 0;
+  line-height: 1.4;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+/* === AIプラン考案ページのスタイル === */
+.ai-plan-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.ai-plan-form {
+  background: linear-gradient(135deg, #ffffff, var(--pale-pink));
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.1);
+}
+
+.ai-plan-form .form-group {
+  margin-bottom: 20px;
+}
+
+.ai-plan-form label {
+  display: flex;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.user-input-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 200px;
+  padding: 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.3s ease;
+}
+
+.user-input-textarea:focus {
+  outline: none;
+  border-color: var(--primary-pink);
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
+}
+
+/* 揺れるアニメーションの定義 */
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
+}
+
+.textarea-error {
+  border-color: #e74c3c !important; /* 枠線を赤くする */
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both; /* shakeアニメーションを適用 */
+}
+
+.user-input-textarea:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.submit-button {
+  background: linear-gradient(135deg, var(--primary-pink), var(--accent-color));
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(233, 30, 99, 0.2);
+}
+
+.submit-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--hover-pink), var(--primary-pink));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(233, 30, 99, 0.3);
+}
+
+.submit-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.clear-button {
+  background-color: #fff;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-button:hover:not(:disabled) {
+  background-color: #f5f5f5;
+  border-color: #ccc;
+}
+
+.error-message {
+  background-color: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.suggestion-result {
+  animation: fadeIn 0.8s ease-in-out; /* より長めのアニメーション時間 */
+}
+
+.suggestion-card {
+  background: linear-gradient(135deg, #ffffff, var(--pale-pink));
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.15);
+  margin-bottom: 24px;
+  animation: fadeIn 1.0s ease-in-out 0.2s both; /* 少し遅延させてカードをアニメーション */
+}
+
+.plan-title {
+  color: var(--accent-color);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+  border-bottom: 2px solid var(--light-pink);
+  padding-bottom: 12px;
+}
+
+.plan-details .detail-section {
+  margin-bottom: 24px;
+  animation: fadeIn 0.8s ease-in-out 0.3s both;
+}
+
+.plan-details h4 {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.plan-description,
+.plan-tips {
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 16px;
+  margin: 0;
+  background-color: var(--pale-pink);
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-pink);
+}
+
+.plan-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+  animation: fadeIn 0.8s ease-in-out 0.35s both;
+}
+
+.meta-item {
+  background: linear-gradient(135deg, #ffffff, var(--pale-pink));
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.meta-label {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.meta-value {
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.suggestion-actions {
+  text-align: center;
+  animation: fadeIn 1.2s ease-in-out 0.4s both; /* ボタンは最後にアニメーション */
+}
+
+.new-suggestion-button {
+  background: linear-gradient(135deg, var(--primary-pink), var(--accent-color));
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(233, 30, 99, 0.2);
+}
+
+.new-suggestion-button:hover {
+  background: linear-gradient(135deg, var(--hover-pink), var(--primary-pink));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(233, 30, 99, 0.3);
+}
+
+.page-description {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.suggestion-result h2 {
+  color: var(--text-primary);
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out 0.1s both; /* 見出しも少し遅延させてアニメーション */
+}
+
+/* ランキングページのフェードイン */
+.ranking-page {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* ランキングアイテムの段階的フェードイン */
+.ranking-page .tweet {
+  animation: fadeIn 0.8s ease-in-out calc(0.1s * var(--rank-index, 0)) both;
+}

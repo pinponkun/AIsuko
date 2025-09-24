@@ -1,0 +1,243 @@
+.submissionPage {
+  background: linear-gradient(135deg, #fce7f3 0%, #f3e8ff 100%);
+  min-height: 100vh;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.aiPlanPage {
+  background: linear-gradient(135deg, #fce7f3 0%, #f3e8ff 100%);
+  min-height: 100vh;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.aiPlanContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  animation: fadeIn 0.8s ease-in-out 0.2s both;
+}
+
+.aiPlanForm {
+  background: linear-gradient(135deg, #fff 0%, #fdf2f8 100%);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(236, 72, 153, 0.1);
+  box-shadow: 0 4px 20px rgba(236, 72, 153, 0.1);
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: flex;
+  font-weight: 600;
+  font-size: 16px;
+  color: #0F1419;
+  margin-bottom: 8px;
+}
+
+.userInputTextarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 200px;
+  padding: 16px;
+  border: 2px solid rgba(236, 72, 153, 0.2);
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.userInputTextarea:focus {
+  outline: none;
+  border-color: #ec4899;
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+  background: #ffffff;
+}
+
+.userInputTextarea:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.formActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.submitButton {
+  background: linear-gradient(135deg, #ec4899, #f472b6);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+}
+
+.submitButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #db2777, #ec4899);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+}
+
+.submitButton:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.clearButton {
+  background-color: #fff;
+  color: #be185d;
+  border: 2px solid rgba(236, 72, 153, 0.3);
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clearButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #fce7f3, #fdf2f8);
+  border-color: #ec4899;
+  color: #db2777;
+}
+
+.errorMessage {
+  background-color: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.pageDescription {
+  color: #536471;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.suggestionResult {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.suggestionCard {
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid #EBEEF0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+  animation: fadeIn 1.0s ease-in-out 0.2s both;
+}
+
+.planTitle {
+  color: #1DA1F2;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+  border-bottom: 2px solid #e1f5fe;
+  padding-bottom: 12px;
+}
+
+.planDetails {
+  animation: fadeIn 0.8s ease-in-out 0.3s both;
+}
+
+.detailSection {
+  margin-bottom: 24px;
+}
+
+.planDescription,
+.planTips {
+  color: #0F1419;
+  line-height: 1.6;
+  font-size: 16px;
+  margin: 0;
+  background-color: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #1DA1F2;
+}
+
+.planMeta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+  animation: fadeIn 0.8s ease-in-out 0.35s both;
+}
+
+.metaItem {
+  background-color: #f0f8ff;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e1f5fe;
+}
+
+.metaLabel {
+  display: block;
+  color: #536471;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.metaValue {
+  color: #0F1419;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.suggestionActions {
+  text-align: center;
+  animation: fadeIn 1.2s ease-in-out 0.4s both;
+}
+
+.newSuggestionButton {
+  background: linear-gradient(135deg, #ec4899, #f472b6);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);
+}
+
+.newSuggestionButton:hover {
+  background: linear-gradient(135deg, #db2777, #ec4899);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
